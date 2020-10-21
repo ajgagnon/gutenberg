@@ -73,6 +73,25 @@ To better understand the specific code example above:
 
 Check out the [_Loading JavaScript_](/docs/designers-developers/developers/tutorials/javascript/loading-javascript.md) tutorial for a primer on how to load your custom JavaScript into the block editor.
 
+### Types of Notices in the Block Editor
+
+There are 2 different types of notices (default, snackbar), which you can specify by passing an optional `type` parameter in the `createNotice()` options object. Producing a snackbar-style notice would require code like this:
+
+
+```js
+( function( wp ) {
+	wp.data.dispatch( 'core/notices' ).createNotice(
+		'success',
+		'Post published.',
+		{
+			type: 'snackbar', // You can specify 'snackbar' or 'default' here.
+		}
+	);
+} )( window.wp );
+```
+
+The type property defaults to `default` if nothing is specified.
+
 ## Learn More
 
 The block editor offers a complete API for generating notices. The official documentation is a great place to review what's possible.
